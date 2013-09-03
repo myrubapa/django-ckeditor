@@ -127,6 +127,11 @@ def upload(request):
     for chunk in upload.chunks():
         out.write(chunk)
     out.close()
+    
+    file_content_type = ['image/jpeg', 'image/pjpeg', 'image/jpeg', 'image/pjpeg', 
+    'image/png',  'image/x-png', 'image/gif', 'image/tiff']
+    if request.FILES['upload'].content_type in file_content_type:
+        create_thumbnail(upload_filename)
 
     create_thumbnail(upload_filename)
 
