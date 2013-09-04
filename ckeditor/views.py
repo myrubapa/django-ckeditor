@@ -128,8 +128,11 @@ def upload(request):
     for chunk in upload.chunks():
         out.write(chunk)
     out.close()
-
-    create_thumbnail(upload_filename)
+    
+    file_content_type = ['image/jpeg', 'image/pjpeg', 'image/jpeg', 
+            'image/pjpeg', 'image/png',  'image/x-png', 'image/gif']
+    if request.FILES['upload'].content_type in file_content_type:
+        create_thumbnail(upload_filename)
 
     # Respond with Javascript sending ckeditor upload url.
     url = get_media_url(upload_filename)
