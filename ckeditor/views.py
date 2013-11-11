@@ -160,8 +160,8 @@ def get_image_files(user=None):
     for root, dirs, files in os.walk(browse_path):
         for filename in [os.path.join(root, x) for x in files]:
             # bypass for thumbs
-            if os.path.splitext(filename)[0].endswith('_thumb') or 
-                    not filename.split('.')[-1].lower() in FILE_EXT):
+            if os.path.splitext(filename)[0].endswith('_thumb') or \
+                    not filename.split('.')[-1].lower() in FILE_EXT:
                 continue
             yield filename
 
